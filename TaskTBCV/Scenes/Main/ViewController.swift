@@ -10,8 +10,8 @@ import UIKit
 class ViewController: UIViewController, CollectionViewCellDelegate {
    
 
-    //var persons = [Person(name: "mariami"), Person(name: "lizi"), Person(name: "ana")]
-    var persons = [CollectionViewCellObject]()
+    var persons = [Person(name: "mariami"), Person(name: "lizi"), Person(name: "ana")]
+//    var persons = [CollectionViewCellObject]()
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -26,6 +26,7 @@ class ViewController: UIViewController, CollectionViewCellDelegate {
     func onItemTapped(_ person: Person) {
         let sb = UIStoryboard(name: "DetailScreen", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        vc.personName = person
         self.navigationController?.pushViewController(vc, animated: true)
     
     }
@@ -48,7 +49,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 .init(person: Person(name: "Mariami"), delegate: self)
             )
         }
-        cell.items = persons
+        cell.items = items
         return cell
     }
     

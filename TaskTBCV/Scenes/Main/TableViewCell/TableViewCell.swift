@@ -11,7 +11,7 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    lazy var items = [CollectionViewCellObject]() {
+    var items = [CollectionViewCellObject]() {
         didSet {
             self.collectionView.reloadData()
         }

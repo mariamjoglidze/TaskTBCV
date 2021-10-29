@@ -25,7 +25,7 @@ class CollectionViewCell: UICollectionViewCell {
     weak var delegate: CollectionViewCellDelegate?
     @IBOutlet weak var nameLabel: UILabel!
     
-    private var person: Person!
+    var person: Person?
     
     func configure(_ object: CollectionViewCellObject) {
         self.delegate = object.delegate
@@ -34,6 +34,9 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction private func onItemTapped() {
-        delegate?.onItemTapped(self.person)
+        guard let person = self.person else {
+            return
+        }
+        delegate?.onItemTapped(person)
     }
 }
